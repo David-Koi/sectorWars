@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from '@mui/material/Button';
 
-export const StyledButton = ({buttonTitle, onClickfunction}) => {
+export const StyledButton = ({buttonTitle, onClickfunction, available}) => {
+
+    useEffect(()=>{
+        console.log(buttonTitle);
+        buttonTitle = buttonTitle.toLowerCase();
+    },[buttonTitle]);
+
     return(
         <Button 
             style={{
@@ -11,7 +17,8 @@ export const StyledButton = ({buttonTitle, onClickfunction}) => {
                 color:'white', position:'relative', 
                 bottom:'20px', right:'10px'
             }}
+            disabled={available}
             onClick={onClickfunction}
-        >{buttonTitle.toLowerCase()}</Button>
+        >{buttonTitle}</Button>
     );
 }
