@@ -1,0 +1,12 @@
+.mainScreen{
+    animation-duration: 3s;
+    animation-name: goIn;
+};
+
+@keyframes goIn {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+};
