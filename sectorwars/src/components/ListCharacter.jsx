@@ -52,7 +52,6 @@ export const ListCharacter = () => {
                 setLoading(false)
                 console.log(err)
             })
-
         };
 
         useEffect(()=>{
@@ -68,22 +67,26 @@ export const ListCharacter = () => {
 
     return(
         <Grid container>
-            <Grid item md={12} style={{height:'90vh'}}>
-                <Grid item md={12} style={{height:'99%'}}>
+            {!loading ?
+                <Grid item md={12} style={{height:'90vh'}}>
+                    <Grid item md={12} style={{height:'99%'}}>
 
+                    </Grid>
+                    <Grid item md={12} 
+                        style={{
+                            color:'white', display:'flex', 
+                            justifyContent:'space-between', 
+                            margin:'45px'
+                        }}
+                    >
+                        <StyledButton available={actualData?.data?.previous !== null && loading === false ? false : true} buttonTitle={'Prev...'} onClickfunction={function(){prevPage(actualData)}}/>
+                        <StyledButton available={actualData?.data?.next !== null && loading === false ? false : true} buttonTitle={'Next...'} onClickfunction={function(){nextPage(actualData)}}/>
+                        
+                    </Grid>
                 </Grid>
-                <Grid item md={12} 
-                    style={{
-                        color:'white', display:'flex', 
-                        justifyContent:'space-between', 
-                        margin:'45px'
-                    }}
-                >
-                    <StyledButton available={actualData?.data?.previous !== null && loading === false ? false : true} buttonTitle={'Prev...'} onClickfunction={function(){prevPage(actualData)}}/>
-                    <StyledButton available={actualData?.data?.next !== null && loading === false ? false : true} buttonTitle={'Next...'} onClickfunction={function(){nextPage(actualData)}}/>
-                    
-                </Grid>
-            </Grid>
+            :
+                <h1>Loading</h1>
+            }
         </Grid>
     );
 };
