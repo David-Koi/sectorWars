@@ -15,7 +15,8 @@ export const StyledButton = ({buttonTitle, onClickfunction, available}) => {
                 border:'1px solid white',
                 background:'transparent', 
                 color:'white', position:'relative', 
-                bottom:'20px', right:'10px'
+                bottom:'20px', right:'10px',
+                opacity: available ? 0.2 : 1
             }}
             disabled={available}
             onClick={onClickfunction}
