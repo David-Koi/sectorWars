@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { StyledButton } from "./StyledButton";
 import Grid from '@mui/material/Grid';
+import OutlinedCard from "./OutlinedCard";
 
 export const ListCharacter = () => {
 
@@ -61,9 +62,20 @@ export const ListCharacter = () => {
     return(
         <Grid container>
             <Grid item md={12} style={{height:'90vh'}}>
-                <Grid item md={12} style={{height:'99%'}}>
+                <Grid item md={12} 
+                    style={{
+                        height:'85%', display:'flex',
+                        flexWrap:'wrap', marginTop:'5%'
+                    }}
+                >
                     {!loading ?
-                        <h1 style={{color:'white'}}>no loading</h1>
+                        actualData?.data?.results?.map((character)=>{
+                            return(
+                                // <Grid md={3}>
+                                    <OutlinedCard character={character}/>
+                                // </Grid>
+                            )
+                        })
                     :
                         <h1 style={{color:'white'}}> loading</h1>
                     }
@@ -72,7 +84,7 @@ export const ListCharacter = () => {
                     style={{
                         color:'white', display:'flex', 
                         justifyContent:'space-between', 
-                        margin:'45px'
+                        margin:'50px'
                     }}
                 >
                     <StyledButton 

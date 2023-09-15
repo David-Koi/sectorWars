@@ -12,9 +12,9 @@ export const StyledButton = ({buttonTitle, onClickfunction, available}) => {
         <Button 
             style={{
                 width:'5%',
-                border:'1px solid white',
+                border:'1px solid #FFE81F',
                 background:'transparent', 
-                color:'white', position:'relative', 
+                color:'#FFE81F', position:'relative', 
                 bottom:'20px', right:'10px',
                 opacity: available ? 0.2 : 1
             }}

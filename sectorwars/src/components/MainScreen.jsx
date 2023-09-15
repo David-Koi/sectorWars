@@ -9,7 +9,7 @@ import { ListCharacter } from "./ListCharacter";
 import "./MainScreen.css";
 
 export const MainScreen = () => {
-
+/*
     const mainCaller = () =>{
         axios
             .get("https://swapi.dev/api/")
@@ -24,13 +24,17 @@ export const MainScreen = () => {
     useEffect(()=>{
         mainCaller();
     },[]);
-
+*/
     const [videoMute, setVideoMute] = useState(true); 
     const [videoEnd, setVideoEnd] = useState(false); 
                   
     return(
         <Box>
-            <Grid container>
+            <Grid container 
+                style={{
+                    backgroundColor:'black',
+                }}
+            >
                 {!videoEnd ?
                         
                     <Grid item md={12}
@@ -47,7 +51,7 @@ export const MainScreen = () => {
                                 muted={videoMute}
                                 autoPlay
                                 onEnded={()=>setVideoEnd(true)}
-                                controls //=> a eliminar cuando se acabe el desarrollo
+                                controls
                             >
                                 <source src={video} type="video/mp4" />
                             </video>
@@ -68,10 +72,11 @@ export const MainScreen = () => {
                 :
                                 
                     <Grid item md={12}
-                    className="mainScreen"
+                        className="mainScreen"
                         style={{
                             height:'100vh',
                             backgroundImage: `url(${backgroundImg})`,
+                            background:'black'
                         }}
                     >
                         <ListCharacter/>   
