@@ -1,30 +1,16 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, {useState} from "react";
 import { StyledButton } from "./StyledButton";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import  video from "../assets/video/intro.mp4";
 import backgroundImg from "../assets/images/backgroundImg.jpg";
 import { ListCharacter } from "./ListCharacter";
+import VolumeMuteTwoToneIcon from '@mui/icons-material/VolumeMuteTwoTone';
+import VolumeOffTwoToneIcon from '@mui/icons-material/VolumeOffTwoTone';
 import "./MainScreen.css";
 
 export const MainScreen = () => {
-/*
-    const mainCaller = () =>{
-        axios
-            .get("https://swapi.dev/api/")
-            .then((res)=>{
-                console.log(res)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-    };
 
-    useEffect(()=>{
-        mainCaller();
-    },[]);
-*/
     const [videoMute, setVideoMute] = useState(true); 
     const [videoEnd, setVideoEnd] = useState(false); 
                   
@@ -36,7 +22,6 @@ export const MainScreen = () => {
                 }}
             >
                 {!videoEnd ?
-                        
                     <Grid item md={12}
                         style={{
                             height:'100vh', background:'black',
@@ -51,7 +36,6 @@ export const MainScreen = () => {
                                 muted={videoMute}
                                 autoPlay
                                 onEnded={()=>setVideoEnd(true)}
-                                controls
                             >
                                 <source src={video} type="video/mp4" />
                             </video>
@@ -63,7 +47,7 @@ export const MainScreen = () => {
                         }>
                             <StyledButton 
                                 id="unmuteButton"
-                                buttonTitle={`Mute ${videoMute ? 'on' : 'off'}`} 
+                                buttonTitle={videoMute ? <VolumeOffTwoToneIcon/> : <VolumeMuteTwoToneIcon/>} 
                                 onClickfunction={function(){setVideoMute(!videoMute)}}
                             />
                         </Grid>

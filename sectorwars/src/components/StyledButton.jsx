@@ -3,11 +3,6 @@ import Button from '@mui/material/Button';
 
 export const StyledButton = ({buttonTitle, onClickfunction, available}) => {
 
-    useEffect(()=>{
-        console.log(buttonTitle);
-        buttonTitle = buttonTitle.toLowerCase();
-    },[buttonTitle]);
-
     return(
         <Button 
             style={{

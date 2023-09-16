@@ -4,17 +4,17 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { color } from '@mui/system';
+import loadingGif from '../assets/images/loadingGif.gif';
+import Grid from '@mui/material/Grid';
+
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'rgb(27, 38, 49, 0.9)',
+  width: 'auto',
   border:'1px solid #FFE81F', 
   borderRadius:'20px',
   boxShadow: 24,
@@ -23,33 +23,45 @@ const style = {
 
 export default function TransitionsModal({
     open, 
-    setOpen, 
-    handleOpen, 
     handleClose,
     character,
 }) {
 
-    let films = [];
-    const [loading, setLoading] = useState();
-    const [data, setData] = useState([]);
+    let urls = [];
+    let today = new Date().getFullYear();
+    const [dataFilm, setDataFilm] = useState([]);
 
-    const takeFilm = async (url, position)=> {
-        
-        await axios
-        .get(url)
-        .then((res)=>{
-            console.log(res)
-            films.push(res);
-            return res;
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+    const takeFilm = async (url)=> {
+        let aux = urls.filter((elm)=> elm === url);
+        if(aux.length === 0){
+            urls.push(url);
+            await axios
+            .get(url)
+            .then((res)=>{
+                if(res?.status === 200){
+                    setDataFilm((prev)=>[...prev, res]);            
+                };
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        };
     };
+    
+    const yearsCalculator =(date)=> {
+        let aux = Number(date.slice(0,4));
+        return today - aux;
+    };
+
+    useEffect(()=>{
+        if(character !== undefined){
+            character?.films?.forEach((url)=>
+                takeFilm(url));
+        }
+    },[character]);
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -65,13 +77,26 @@ export default function TransitionsModal({
         style={{color:'#FFE81F'}}
       >
         <Fade in={open}>
-            <Box sx={style}>
-                {character !== undefined  ?
+            <Box 
+                sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: 'auto',
+                    border:'5px solid #FFE81F', 
+                    borderRadius:'20px',
+                    boxShadow: 24,
+                    p: 4,   
+                    bgcolor: dataFilm !== undefined && dataFilm.length === character?.films?.length ? 'rgb(0, 0, 0, 0.9)' : 'black'
+                }}
+            >
+                {dataFilm !== undefined && dataFilm.length === character?.films?.length ?   
                     <>
                         <Typography variant="h5" color="#FFE81F" component="div" style={{textDecoration:'underline'}}>
                             {character?.name}
                         </Typography>
-                        <Typography sx={{ mb: 1.5, ml: 2 }} color="#FFE81F">
+                        <Typography sx={{ mb: 1.5, ml: 2, mt: 2 }} color="#FFE81F">
                             Height: <small style={{color:'white'}}>{character?.height}</small>
                         </Typography>
                         <Typography sx={{ mb: 1.5, ml: 2 }} color="#FFE81F">
@@ -89,32 +114,24 @@ export default function TransitionsModal({
                         <Typography sx={{ mb: 1.5, ml: 2, mt:2 }} color="#FFE81F">
                             Birth year: <small style={{color:'white'}}>{character?.birth_year}</small>
                         </Typography>
-                        <Typography sx={{ mb: 1.5, ml: 2 }} color="#FFE81F" variant="body2">
+                        <Typography sx={{ mb: 1.5, ml: 2 }} color="#FFE81F"º>
                             Gender: <small style={{color:'white'}}>{character?.gender}</small>
                         </Typography>
                         <Typography sx={{ mb: 1.5, ml: 2 }} color="#FFE81F">
                             Appears in {character?.films?.length} movies.
                         </Typography>
-                        {character?.films?.length > 0 ?
-
-                            character?.films?.map((film, key)=>{
-                                let data = takeFilm(film, key);
-console.log(data)
-                                return(
-                                    <Typography sx={{ mb: 1.5, ml: 4 }} color="#FFE81F" variant="body2">
-                                        <small style={{color:'white'}}>{data !== undefined ? data?.data?.title : 'Loading'} filmed in {data?.data?.release_date}</small>
-                                    </Typography>
-                                )
-                            })
-                        :
-                            
-                            <Typography sx={{ mb: 1.5, ml: 4 }} color="#FFE81F" variant="body2">
-                                <small style={{color:'white'}}>No film data.</small>
-                            </Typography>
-                        }
+                        {dataFilm.map((film)=>{
+                            return(
+                                <Typography sx={{ mb: 1.5, ml: 4 }} color="white">
+                                    {film?.data?.title}, {yearsCalculator(film?.data?.release_date)} years ago.
+                                </Typography>
+                            )
+                        })}
                     </>
                 :
-                    <h1>Loading</h1>
+                    <Grid item md={12} style={{height:'100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                        <img id='loadingGif' style={{width:'200px', height:'200px'}} src={loadingGif}/>
+                    </Grid>
                 }
             </Box>
         </Fade>
