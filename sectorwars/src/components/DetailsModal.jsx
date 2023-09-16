@@ -7,6 +7,9 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import loadingGif from '../assets/images/loadingGif.gif';
 import Grid from '@mui/material/Grid';
+import "../assets/fonts/StarJediRounded.ttf";
+import './fontStyle.css';  
+
 
 
 const style = {
@@ -93,8 +96,8 @@ export default function TransitionsModal({
             >
                 {dataFilm !== undefined && dataFilm.length === character?.films?.length ?   
                     <>
-                        <Typography variant="h5" color="#FFE81F" component="div" style={{textDecoration:'underline'}}>
-                            {character?.name}
+                        <Typography variant="h5" color="#FFE81F" component="div" style={{textDecoration:'underline', fontFamily:'star', fontSize:'30px'}}>
+                            {character?.name?.toLowerCase()}
                         </Typography>
                         <Typography sx={{ mb: 1.5, ml: 2, mt: 2 }} color="#FFE81F">
                             Height: <small style={{color:'white'}}>{character?.height}</small>

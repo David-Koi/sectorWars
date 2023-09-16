@@ -6,6 +6,8 @@ import OutlinedCard from "./OutlinedCard";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import loadingGif from '../assets/images/loadingGif.gif';
+import "../assets/fonts/StarJediRounded.ttf";
+import './fontStyle.css'; 
 
 export const ListCharacter = () => {
 
@@ -57,12 +59,19 @@ export const ListCharacter = () => {
     },[actualPage]);
 
     return(
-        <Grid container>
+        <Grid container style={{flexDirection:'column'}}>
             <Grid item md={12} style={{height:'90vh'}}>
+                <h1 
+                    style={{
+                        fontFamily:'star', color:'#FFE81F', 
+                        textAlign:'center'
+                    }}
+                >STAR WARS CHARACTERS</h1>
                 <Grid item md={12} 
                     style={{
                         height:'85%', display:'flex',
-                        flexWrap:'wrap', marginTop:'5%', display:'flex', justifyContent:'center',
+                        flexWrap:'wrap', marginTop:'2%', 
+                        justifyContent:'center',
                     }}
                 >
                     {!loading ?
@@ -72,42 +81,51 @@ export const ListCharacter = () => {
                             )
                         })
                     :
-                        <Grid item md={12} style={{height:'100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                            <img id='loadingGif' style={{width:'200px', height:'200px'}} src={loadingGif}/>
+                        <Grid item md={12} 
+                            style={{
+                                height:'100%', display:'flex', 
+                                justifyContent:'center', 
+                                alignItems:'center'
+                            }}
+                        >
+                            <img id='loadingGif' 
+                                style={{width:'200px', height:'200px'}} 
+                                src={loadingGif}
+                            />
                         </Grid>
                     }
                 </Grid>
-                <Grid item md={12} 
-                    style={{
-                        color:'white', display:'flex', 
-                        justifyContent:'space-between', 
-                        margin:'50px'
-                    }}
-                >
-                    <StyledButton 
-                        available={
-                            actualData?.data?.previous !== null 
-                                && loading === false ? false : true
+            </Grid>
+            <Grid item md={12} 
+                style={{
+                    color:'white', display:'flex', 
+                    justifyContent:'space-between', 
+                    margin:'50px'
+                }}
+            >
+                <StyledButton 
+                    available={
+                        actualData?.data?.previous !== null 
+                            && loading === false ? false : true
+                    } 
+                    buttonTitle={<ArrowBackIosIcon/>} 
+                    onClickfunction={function(){prevPage(actualData)}}
+                />
+                <StyledButton 
+                    available={actualPage === 1 
+                        || loading === true ? true : false
+                    } 
+                    buttonTitle={'Main'} 
+                    onClickfunction={function(){mainPage(actualData)}}
+                />
+                <StyledButton 
+                    available={
+                        actualData?.data?.next !== null 
+                            && loading === false ? false : true
                         } 
-                        buttonTitle={<ArrowBackIosIcon/>} 
-                        onClickfunction={function(){prevPage(actualData)}}
-                    />
-                    <StyledButton 
-                        available={actualPage === 1 
-                            || loading === true ? true : false
-                        } 
-                        buttonTitle={'Main'} 
-                        onClickfunction={function(){mainPage(actualData)}}
-                    />
-                    <StyledButton 
-                        available={
-                            actualData?.data?.next !== null 
-                                && loading === false ? false : true
-                            } 
-                        buttonTitle={<ArrowForwardIosOutlinedIcon/>} 
-                        onClickfunction={function(){nextPage(actualData)}}
-                    />
-                </Grid>
+                    buttonTitle={<ArrowForwardIosOutlinedIcon/>} 
+                    onClickfunction={function(){nextPage(actualData)}}
+                />
             </Grid>
         </Grid>
     );
