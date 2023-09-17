@@ -10,24 +10,22 @@ import Grid from '@mui/material/Grid';
 import "../assets/fonts/StarJediRounded.ttf";
 import './fontStyle.css';  
 
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 'auto',
-  border:'1px solid #FFE81F', 
-  borderRadius:'20px',
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function TransitionsModal({
+/**
+ * 
+ * @param {{open:boolean, handleClose:function, character:{}, openError:function, setErrorMessage:function}}
+ * @param open stablish the state of the modal, close or open. 
+ * @param character object with character data.
+ * @param openError handler to open the errorModal.
+ * @param setErrorMessage setter method to stablish the error message in errorModal.
+ * @returns modal component from MUI material opened from the OutlinedCard component
+ * with "More details" button.
+ */
+export default function DetailsModal({
     open, 
     handleClose,
     character,
+    openError,
+    setErrorMessage,
 }) {
 
     let urls = [];
@@ -46,7 +44,8 @@ export default function TransitionsModal({
                 };
             })
             .catch((err)=>{
-                console.log(err)
+                setErrorMessage(err.message)
+                openError();
             })
         };
     };
@@ -60,6 +59,9 @@ export default function TransitionsModal({
         if(character !== undefined){
             character?.films?.forEach((url)=>
                 takeFilm(url));
+        }else{
+            setErrorMessage('Character data not loaded')
+            openError();
         }
     },[character]);
 
