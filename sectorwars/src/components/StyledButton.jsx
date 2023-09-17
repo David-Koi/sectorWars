@@ -1,7 +1,18 @@
 import React from "react";
 import Button from '@mui/material/Button';
 
-export const StyledButton = ({buttonTitle, onClickfunction, available}) => {
+/**
+ * @param {{buttonTitle:string, onClickfunction:Function, available:boolean}}
+ * @param  buttonTitle string with the button´s text or the icon to show.
+ * @param  onClickfunction function of the button as callBack.
+ * @param  available boolean that stablish if the button are available or not.
+ * @returns button component from MUI material with the style of the page for all components.
+ */
+export const StyledButton = ({
+    buttonTitle, 
+    onClickfunction, 
+    available
+}) => {
 
     return(
         <Button 

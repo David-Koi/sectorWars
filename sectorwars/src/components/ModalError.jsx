@@ -1,15 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import loadingGif from '../assets/images/loadingGif.gif';
-import Grid from '@mui/material/Grid';
 import "../assets/fonts/StarJediRounded.ttf";
 import './fontStyle.css';  
 
+/**
+ * @param {{errorModal:boolean, closeError:Function, errorMessage:string}} 
+ * @param  errorModal stablish if the errorModal is open or close.
+ * @param  closeError handler to close the modal when click outside.
+ * @param  errorMessage string to show as message.
+ * @returns modal with a error message.
+ */
 export default function ModalError({
     errorModal, 
     closeError,

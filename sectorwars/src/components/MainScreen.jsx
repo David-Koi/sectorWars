@@ -47,7 +47,8 @@ export const MainScreen = () => {
                     style={{
                         backgroundColor:'black',
                     }}
-                >
+                >   
+                    {/*VIDEO */}
                     {!videoEnd ?
                         <Grid item md={12}
                             style={{
@@ -95,7 +96,7 @@ export const MainScreen = () => {
                         </Grid>
                         
                     :
-                                    
+                        /* LIST OF CHARACTERS COMPONENT */     
                         <Grid item md={12}
                             // className="inAnimation"
                             style={{
