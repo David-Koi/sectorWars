@@ -1,12 +1,14 @@
-.mainScreen{
-    animation-duration: 3s;
+.inAnimation{
+    animation-duration: 5s;
     animation-name: goIn;
 };
 
 @keyframes goIn {
     from{
         opacity: 0;
-    }to{
+    }
+    
+    to{
         opacity: 1;
     }
 };
