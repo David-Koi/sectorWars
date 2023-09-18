@@ -5,7 +5,7 @@ develop.
 
 Here is my technical test for a selection process by SectorAlarm company.
 
-First at all tou need clone my project in your computer.
+First at all you need clone my project in your computer.
 
                             INSTRUCTIONS TO CLONE AND EXECUTE
 
