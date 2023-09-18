@@ -95,7 +95,7 @@ export const ListCharacter = ({
      */
     useEffect(()=>{
         if(actualPage === 1){
-            characterCaller("https://swapi.dev/api/peoplee/")
+            characterCaller("https://swapi.dev/api/people/")
         }
     },[actualPage]);
 
