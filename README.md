@@ -22,6 +22,7 @@ you´ll check if the space ship is ready or not.
 
 
                                 INSTRUCTIONS TO USE THE APP
+                WARNING!!! - the API is too slow sometimes, be patient, thanks!
 
 - First at all, you can watch the introductory video with the plot of the film, it´s very exciting. You have a button 
 in the lower right corner there is a button to unmute or mute the video. If you are in a hurry, you can use the video 
