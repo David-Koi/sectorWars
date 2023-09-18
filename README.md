@@ -16,7 +16,8 @@ First at all tou need clone my project in your computer.
 this README file and the picture with the instructions. Go into the second sectorWars folder.
 5 - Now and here start your rebelion, rebel soldier. type the next comand in the console : "npm install", the node_modules folder must appear.
 6 - Once the installation has finish, you can execute the TEST files with the comand: "npm run test", and 
-you´ll check if the space ship is o and type: "npm start".
+you´ll check if the space ship is ready or not.
+7 -  Now prepare your laser saber and type: "npm start".
 
 
 
