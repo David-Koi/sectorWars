@@ -7,7 +7,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import loadingGif from '../assets/images/loadingGif.gif';
 import "../assets/fonts/StarJediRounded.ttf";
-import './fontStyle.css'; 
+import '../css/fontStyle.css'; 
 
 /**
  * @param {{openError:function, setErrorMessage: function, errorModal:boolean}} 
@@ -83,9 +83,9 @@ export const ListCharacter = ({
             };
         })
         .catch((err)=>{
-            setLoading(false)
+            setLoading(false);
             openError();
-            setErrorMessage(err.message)
+            setErrorMessage(err.message);
         })
     };
 
@@ -101,7 +101,7 @@ export const ListCharacter = ({
 
     return(
         <Grid container style={{flexDirection:'column'}}>
-            <Grid item md={12} style={{height:'90vh'}}>
+            <Grid item md={12} style={{minHeight:'90vh'}}>
                 <h1 
                     style={{
                         fontFamily:'star', color:'#FFE81F', 
@@ -133,13 +133,13 @@ export const ListCharacter = ({
                         //LOADING GIF
                         <Grid item md={12} 
                             style={{
-                                height:'100%', display:'flex', 
+                                minHeight:'65vh', display:'flex', 
                                 justifyContent:'center', 
                                 alignItems:'center'
                             }}
                         >
                             <img id='loadingGif' 
-                                style={{width:'200px', height:'200px'}} 
+                                style={{width:'250px', height:'250px', opacity:'0.5'}} 
                                 src={loadingGif}
                             />
                         </Grid>
@@ -150,7 +150,7 @@ export const ListCharacter = ({
             {/*BUTTONS container */}
             <Grid item md={12} 
                 style={{
-                    color:'white', display:'flex', 
+                    display:'flex', 
                     justifyContent:'space-between', 
                     margin:'50px'
                 }}
@@ -184,4 +184,6 @@ export const ListCharacter = ({
             </Grid>
         </Grid>
     );
+
 };
+

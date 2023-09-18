@@ -1,0 +1,17 @@
+
+@keyframes goIn {
+    from{
+        opacity: 0;
+    }
+    
+    to{
+        opacity: 1;
+    }
+}
+.inAnimation{
+    animation-duration: 5s;
+    animation-name: goIn;
+    background-image: url(../assets/images/backgroundImg.jpg);
+    height: 100vh
+};
+

@@ -1,8 +1,9 @@
 import { findByTestId, fireEvent, render, screen } from '@testing-library/react';
-import { MainScreen } from './MainScreen';
-import { StyledButton } from './StyledButton';
+import { MainScreen } from '../components/MainScreen';
+import { StyledButton } from '../components/StyledButton';
+import {video} from '../assets/video/intro.mp4' 
 
-describe('render MainScreen component', () => {
+describe('test MainScreen component', () => {
     const component = render(<MainScreen/>);
     test('Render MainScreen', ()=>{
         render(<MainScreen />);
@@ -10,8 +11,8 @@ describe('render MainScreen component', () => {
     });
 
     test('MainScreen has a video', ()=>{
-        const video = component.container.querySelector('video');
-        expect(video)
+        const videoRender = render(video);
+        expect(videoRender)
     });
 
     test('Render StyledButton', ()=>{

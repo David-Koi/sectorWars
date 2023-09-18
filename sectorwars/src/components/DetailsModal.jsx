@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import loadingGif from '../assets/images/loadingGif.gif';
 import Grid from '@mui/material/Grid';
 import "../assets/fonts/StarJediRounded.ttf";
-import './fontStyle.css';  
+import '../css/fontStyle.css';  
 
 /**
  * @param {{open:boolean, handleClose:function, character:{}, openError:function, setErrorMessage:function}}
@@ -19,13 +19,13 @@ import './fontStyle.css';
  * @returns modal component from MUI material opened from the OutlinedCard component
  * with "More details" button.
  */
-export default function DetailsModal({
+export const DetailsModal = ({
     open, 
     handleClose,
     character,
     openError,
     setErrorMessage,
-}){
+}) =>{
 
     let urls = [];//array where i´ll put in the urls already used to not repeat.
     let today = new Date().getFullYear();//stablish the actual year to compare it with the date of the film.
@@ -50,7 +50,7 @@ export default function DetailsModal({
                 };
             })
             .catch((err)=>{
-                setErrorMessage(err.message)
+                setErrorMessage(err.message);
                 openError();
             })
         };
@@ -71,12 +71,16 @@ export default function DetailsModal({
      * open the errorModal.
      */
     useEffect(()=>{
+        
         if(character !== undefined){
             character?.films?.forEach((url)=>
-                takeFilm(url));
+                takeFilm(url)
+            );
         }else{
-            setErrorMessage('Character data not loaded')
-            openError();
+            function aux (){
+                openError();
+                setErrorMessage("Character data not loaded");
+            };
         }
     },[character]);
 

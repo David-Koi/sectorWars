@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import DetailsModal from './DetailsModal';
+import { DetailsModal } from './DetailsModal';
 import Box from '@mui/material/Box';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import "../assets/fonts/StarJediRounded.ttf";
-import './fontStyle.css';  
+import '../css/fontStyle.css';  
 
 /**
  * 

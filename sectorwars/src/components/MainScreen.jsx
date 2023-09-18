@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { StyledButton } from "./StyledButton"; 
 import { ListCharacter } from "./ListCharacter";
-import ModalError from "./ModalError";
+import { ModalError } from "./ModalError";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import  video from "../assets/video/intro.mp4";
-import backgroundImg from "../assets/images/backgroundImg.jpg";
 import VolumeMuteTwoToneIcon from '@mui/icons-material/VolumeMuteTwoTone';
 import VolumeOffTwoToneIcon from '@mui/icons-material/VolumeOffTwoTone';
-import "./MainScreen.css";
+import "../css/MainScreen.css";
 
 /**
  * @returns Main component, it calls other components and control the errors.
@@ -20,7 +19,7 @@ export const MainScreen = () => {
      */
     const [videoMute, setVideoMute] = useState(true); //video sound available or not.
     const [videoEnd, setVideoEnd] = useState(false); //video ended.
-
+    let nodeRef = videoEnd ? true: false;
     /**
      * @description constants to control the errorModal and its message.
      */
@@ -96,13 +95,9 @@ export const MainScreen = () => {
                         </Grid>
                         
                     :
-                        /* LIST OF CHARACTERS COMPONENT */     
+                       
                         <Grid item md={12}
-                            // className="inAnimation"
-                            style={{
-                                height:'100vh',
-                                backgroundImage: `url(${backgroundImg})`,
-                            }}
+                            className="inAnimation"
                         >
                             <ListCharacter
                                 errorModal={errorModal} 

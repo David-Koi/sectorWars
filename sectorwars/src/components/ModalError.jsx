@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import "../assets/fonts/StarJediRounded.ttf";
-import './fontStyle.css';  
+import '../css/fontStyle.css';  
 
 /**
  * @param {{errorModal:boolean, closeError:Function, errorMessage:string}} 
@@ -14,11 +14,11 @@ import './fontStyle.css';
  * @param  errorMessage string to show as message.
  * @returns modal with a error message.
  */
-export default function ModalError({
+export const ModalError =({
     errorModal, 
     closeError,
     errorMessage,
-}) {
+}) => {
 
   return (
     <div>
