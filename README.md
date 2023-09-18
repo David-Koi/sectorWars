@@ -23,13 +23,13 @@ you´ll check if the space ship is ready or not.
 
                                 INSTRUCTIONS TO USE THE APP
                 WARNING!!! - the API is too slow sometimes, be patient, thanks!
-
+    (you´ll see "pending" for a while in open the network window in your browser console)
 - First at all, you can watch the introductory video with the plot of the film, it´s very exciting. You have a button 
 in the lower right corner there is a button to unmute or mute the video. If you are in a hurry, you can use the video 
 controls, you´ll see it if move the mouse.
 - Automactly, the app load the first set of characters from "SWAPI: The Star Wars API", you´ll see ten cards
 with the their names, birth years, genders (n/a if is a non human character) and in how many films they appears.
-If you press over "MORE DETAILS", a modal will be opened in the screen with more information about them, you can close it 
+- If you press over "MORE DETAILS", a modal will be opened in the screen with more information about them, you can close it 
 clicking out of modal.
 
 - Below the cards have three buttons:
