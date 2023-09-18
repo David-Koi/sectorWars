@@ -30,7 +30,8 @@ export default function OutlinedCard({character}) {
         }}
       >
         <CardContent style={{padding:'5%', marginLeft:'10%'}} >
-          <Typography color="#FFE81F" component="div" style={{textDecoration:'underline', fontFamily:'star', fontSize:'20px'}}>
+          <Typography color="#FFE81F" component="div" 
+          style={{textDecoration:'underline', fontFamily:'star', fontSize:'20px'}}>
             {character?.name.toLowerCase()}
           </Typography>
           <Typography sx={{ mb: 1.5, ml: 2, mt:2 }} color="#FFE81F">

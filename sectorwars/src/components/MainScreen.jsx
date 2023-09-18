@@ -36,7 +36,6 @@ export const MainScreen = () => {
                                 muted={videoMute}
                                 autoPlay
                                 onEnded={()=>setVideoEnd(true)}
-                                controls
                             >
                                 <source src={video} type="video/mp4" />
                             </video>
