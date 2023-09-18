@@ -25,7 +25,7 @@ export const ModalError =({
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={errorModal}
+        open={errorModal !== undefined ? errorModal : false}
         onClose={closeError}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}

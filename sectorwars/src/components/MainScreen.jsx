@@ -45,13 +45,14 @@ export const MainScreen = () => {
                 <Grid container 
                     style={{
                         backgroundColor:'black',
+                        height:'90vh'
                     }}
                 >   
                     {/*VIDEO */}
                     {!videoEnd ?
                         <Grid item md={12}
                             style={{
-                                height:'100vh', background:'black',
+                                height:'90vh', background:'black',
                             }}
                         >
                             <Grid item md={12} 

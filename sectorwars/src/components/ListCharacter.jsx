@@ -95,13 +95,13 @@ export const ListCharacter = ({
      */
     useEffect(()=>{
         if(actualPage === 1){
-            characterCaller("https://swapi.dev/api/people/")
+            characterCaller("https://swapi.dev/api/peoplee/")
         }
     },[actualPage]);
 
     return(
         <Grid container style={{flexDirection:'column'}}>
-            <Grid item md={12} style={{minHeight:'90vh'}}>
+            <Grid item md={12} style={{minHeight:'85vh'}}>
                 <h1 
                     style={{
                         fontFamily:'star', color:'#FFE81F', 
@@ -184,6 +184,5 @@ export const ListCharacter = ({
             </Grid>
         </Grid>
     );
-
 };
 
